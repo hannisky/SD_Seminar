@@ -14,6 +14,7 @@ DrillDownPageId=50102;
                 if "No." <> xRec."No." then begin
                     SeminarSetup.GET;
                     NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos.");
+            
                     "No Series" := '';
 
                 end;
@@ -122,6 +123,7 @@ DrillDownPageId=50102;
         Seminar: Record "CSD Seminar";
         GenProdPostingGroup: Record "Gen. Product Posting Group";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        
 
     trigger OnInsert()
     begin
