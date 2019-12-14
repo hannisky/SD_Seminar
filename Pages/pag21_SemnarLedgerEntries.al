@@ -109,5 +109,29 @@ page 50121 "CSD Seminar Ledger Entries"
                 ApplicationArea = All;
             }
         }
+
+
     }
+        actions
+        {
+        area(Processing)
+        {
+            action("&Navigate")
+            {
+                Caption = '&Navigate';
+                Image = Navigate;
+                Promoted = true;
+                PromotedCategory = Process;
+                ApplicationArea = All;
+
+                trigger OnAction();
+                var
+                    Navigate: page Navigate;
+                begin
+                    Navigate.SetDoc("Posting Date", "Document No.");
+                    Navigate.Run();
+                end;
+            }
+        }
+        }
 }

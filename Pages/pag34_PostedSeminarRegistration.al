@@ -1,4 +1,4 @@
-page 50134  "CSD Posted Seminar Reg."
+page 50134 "CSD Posted Seminar Reg."
 {
     // CSD1.00 - 2018-01-01 - D. E. Veloper
     //   Chapter 7 - Lab 3
@@ -15,106 +15,106 @@ page 50134  "CSD Posted Seminar Reg."
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Starting Date";"Starting Date")
+                field("Starting Date"; "Starting Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Seminar No.";"Seminar No.")
+                field("Seminar No."; "Seminar No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Seminar Name";"Seminar Name")
+                field("Seminar Name"; "Seminar Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Instructor Resource No.";"Instructor Resource No.")
+                field("Instructor Resource No."; "Instructor Resource No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Instructor Name";"Instructor Name")
+                field("Instructor Name"; "Instructor Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; "Document Date")
                 {
                     ApplicationArea = All;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = All;
                 }
-                field(Duration;Duration)
+                field(Duration; Duration)
                 {
                     ApplicationArea = All;
                 }
-                field("Minimum Partypants";"Minimum Partypants")
+                field("Minimum Partypants"; "Minimum Partypants")
                 {
                     ApplicationArea = All;
                 }
-                field("Maximum Partypants";"Maximum Partypants")
+                field("Maximum Partypants"; "Maximum Partypants")
                 {
                     ApplicationArea = All;
                 }
             }
-            part(SeminarRegistrationLines;"CSD Seminar Reg. Subpage")
+            part(SeminarRegistrationLines; "CSD Seminar Reg. Subpage")
             {
-                SubPageLink = "Document No."=Field("No.");
+                SubPageLink = "Document No." = Field("No.");
                 ApplicationArea = All;
             }
             group("Seminar Room")
             {
-                field("Room Resource No.";"Room Resource No.")
+                field("Room Resource No."; "Room Resource No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Room Name";"Room Name")
+                field("Room Name"; "Room Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Room Address";"Room Address")
+                field("Room Address"; "Room Address")
                 {
                     ApplicationArea = All;
                 }
-                field("Room Address 2";"Room Address 2")
+                field("Room Address 2"; "Room Address 2")
                 {
                     ApplicationArea = All;
                 }
-                field("Room Post Code";"Room Post Code")
+                field("Room Post Code"; "Room Post Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Room City";"Room City")
+                field("Room City"; "Room City")
                 {
                     ApplicationArea = All;
                 }
-                field("Room Country/Reg. Code";"Room Country/Reg. Code")
+                field("Room Country/Reg. Code"; "Room Country/Reg. Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Room County";"Room County")
+                field("Room County"; "Room County")
                 {
                     ApplicationArea = All;
                 }
             }
             group(Invoicing)
             {
-                field("Gen. Prod. Posting Group";"Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("VAT Prod. Posting Group";"VAT Prod. Posting Group")
+                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Seminar Price";"Seminar Price")
+                field("Seminar Price"; "Seminar Price")
                 {
                     ApplicationArea = All;
                 }
@@ -122,22 +122,22 @@ page 50134  "CSD Posted Seminar Reg."
         }
         area(factboxes)
         {
-            part("Seminar Nos" ;50117)
+            part("Seminar Nos"; 50117)
             {
-                SubPageLink = "No."=Field("Seminar No.");
+                SubPageLink = "No." = Field("Seminar No.");
                 ApplicationArea = All;
             }
-            part(Customer;9084)
+            part(Customer; 9084)
             {
                 Provider = SeminarRegistrationLines;
-                SubPageLink = "No."=Field("Bill-to Customer No.");
+                SubPageLink = "No." = Field("Bill-to Customer No.");
                 ApplicationArea = All;
             }
-            systempart(Links;Links)
+            systempart(Links; Links)
             {
                 ApplicationArea = All;
             }
-            systempart(Notes;Notes)
+            systempart(Notes; Notes)
             {
                 ApplicationArea = All;
             }
@@ -156,8 +156,8 @@ page 50134  "CSD Posted Seminar Reg."
                     Caption = 'Co&mments';
                     Image = Comment;
                     RunObject = Page 50106;
-                    RunPageLink = "No."=Field("No.");
-                    RunPageView = where("Table Name"=const("Posted Seminar Registration"));
+                    RunPageLink = "No." = Field("No.");
+                    RunPageView = where("Table Name" = const("Posted Seminar Registration"));
                     ApplicationArea = All;
                 }
                 action("&Charges")
@@ -165,11 +165,31 @@ page 50134  "CSD Posted Seminar Reg."
                     Caption = '&Charges';
                     Image = Costs;
                     RunObject = Page 50139;
-                    RunPageLink = "Document No."=Field("No.");
+                    RunPageLink = "Document No." = Field("No.");
                     ApplicationArea = All;
                 }
             }
         }
+        area(Processing)
+        {
+            action("&Navigate")
+            {
+                Caption = '&Navigate';
+                Image = Navigate;
+                Promoted = true;
+                PromotedCategory = Process;
+                ApplicationArea = All;
+
+                trigger OnAction();
+                var
+                    Navigate: page Navigate;
+                begin
+                    Navigate.SetDoc("Posting Date", "No.");
+                    Navigate.Run();
+                end;
+            }
+        }
+
     }
 }
 
