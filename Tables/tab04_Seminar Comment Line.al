@@ -6,6 +6,10 @@ table 50104 "CSD Seminar Comment Line"
     LookupPageId = "CSD Seminar Comment List";
     DrillDownPageId = "CSD Seminar Comment List";
 
+
+
+
+
     fields
     {
         field(10; "Table Name"; Option)
@@ -23,8 +27,16 @@ table 50104 "CSD Seminar Comment Line"
         field(30; "No."; Code[20])
         {
             Caption = 'No.';
-            TableRelation = if ("Table Name" = const(Seminar)) "CSD Seminar"; //else if ("Table Name"=const("Seminar Registration")) "CSD Seminar Reg. Header";
-            DataClassification = AccountData;
+            TableRelation = if ("Table Name" = CONST(Seminar)) "CSD Seminar"
+            else
+            if ("Table Name" = const("Seminar Registration"))
+                "CSD Seminar Reg. Header"
+            else
+            if ("Table Name" = const("Posted Seminar Registration"))
+                "CSD Posted Seminar Reg. Header";
+
+
+
         }
         field(40; "Line No."; Integer)
         {
