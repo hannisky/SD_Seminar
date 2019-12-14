@@ -1,5 +1,6 @@
 report 50101 SeminarRegParticipantList
 {
+    Caption = 'Seminar Registration Participant Report';
     UsageCategory = Administration;
     ApplicationArea = All;
     DefaultLayout = RDLC;
